@@ -18,6 +18,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 
@@ -36,8 +38,8 @@ public class MainActivity extends AppCompatActivity
     private ListView lvNota;
     //private Adaptador adaptador;
     ListView listaProducto;
-    ProgressDialog pd;
-    private ProgressDialog progressDialog;
+    //ProgressDialog pd;
+    //private ProgressDialog progressDialog;
 
     String resultadoTotal;
 
@@ -59,7 +61,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         listaProducto = (ListView) findViewById(R.id.lvNotas);
-
+        Toast.makeText(getApplicationContext(),"antes de ejecutar todo", Toast.LENGTH_LONG).show();
         EjecutarTodo();
     }
 
@@ -139,26 +141,23 @@ public class MainActivity extends AppCompatActivity
             respuesta = conexion.getResponseCode();
 
             resultadoTotal = new StringBuilder();
-            value = new StringBuilder();
 
             if(respuesta == HttpURLConnection.HTTP_OK){
-
                 InputStream inputStream = new BufferedInputStream(conexion.getInputStream());
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
                 while((linea = bufferedReader.readLine()) != null){
-                    //resultadoTotal.append(linea);
+                    resultadoTotal.append(linea);
                 }
-                value.append("ing");
-
             }
 
         }catch (Exception e){
-            e.printStackTrace();
+            //e.printStackTrace();
+            //Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
         }
         //return resultadoTotal = stringBuilder.toString();
-        //return resultadoTotal.toString();
-        return linea.toString();
+        return resultadoTotal.toString();
+        //return linea.toString();
     }
 
     public ArrayList<Entidad> ObtenerJson(String result){
@@ -194,12 +193,13 @@ public class MainActivity extends AppCompatActivity
 
         @Override
         protected Object doInBackground(String... strings) {
+            Toast.makeText(getApplicationContext(),"Ejecutar todo", Toast.LENGTH_SHORT).show();
             Conectar();
             return null;
         }
 
         protected void onPostExecute(Object result){
-            progressDialog.dismiss();
+            //progressDialog.dismiss();
 
             ArrayList<Entidad> productoBean = ObtenerJson(resultadoTotal);
             if (productoBean != null){
@@ -212,12 +212,13 @@ public class MainActivity extends AppCompatActivity
 
     private void EjecutarTodo(){
         //pd = ProgressDialog.show(this, "Cargando las noticias", "Espere por favor...", true, false);
-        progressDialog = new ProgressDialog(MainActivity.this);
+        /*progressDialog = new ProgressDialog(MainActivity.this);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.setTitle("Cargando las noticias");
         progressDialog.setMessage("Espere por favor...");
-        progressDialog.show();
-
+        progressDialog.show();*/
+        Toast.makeText(getApplicationContext(),"Ejecutar todo", Toast.LENGTH_SHORT).show();
         new HiloCargarImagen().execute();
+
     }
 }
