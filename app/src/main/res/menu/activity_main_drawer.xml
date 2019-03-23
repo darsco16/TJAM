@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_tjam"
+            android:icon="@drawable/balanza"
+            android:title="TJAM" />
+        <item
+            android:id="@+id/nav_jel"
+            android:icon="@drawable/jel"
+            android:title="Juicio en Línea" />
+        <item
+            android:id="@+id/nav_acdos"
+            android:icon="@drawable/verificacion"
+            android:title="Consulta de Acuerdos" />
+        <item
+            android:id="@+id/nav_listas"
+            android:icon="@drawable/news"
+            android:title="Listas de Acuerdos" />
+    </group>
+
+    <item android:title="Ubicanos">
+        <menu>
+            <group>
+                <item
+                    android:id="@+id/nav_share"
+                    android:icon="@drawable/ic_menu_share"
+                    android:title="Contacto" />
+                <item
+                    android:id="@+id/nav_manual"
+                    android:icon="@drawable/help"
+                    android:title="Manual" />
+            </group>
+        </menu>
+    </item>
+
+</menu>
