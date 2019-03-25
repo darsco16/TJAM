@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_marginHorizontal="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context=".forgot_jel">
+    tools:context=".recovery_jel">
 
     <ImageView
         android:id="@+id/imageView4"
